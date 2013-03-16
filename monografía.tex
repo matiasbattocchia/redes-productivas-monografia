@@ -1,0 +1,142 @@
+\documentclass[a4paper]{report}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenx}
+
+\begin{document}
+
+\title{Sistema de Información de Redes Productivas\\\textsc{Un mapa de la economía nacional}}
+\author{Matías Battocchia}
+\author{Gonzalo Flores Kemec}
+
+\maketitle
+
+\section*{Introducción}
+
+El Gobierno Nacional dentro del marco del Plan Estratégico Industrial 2020 ha asumido el compromiso de promover la industria nacional.
+
+Con el fin de aportar a este proceso, se presentan las bases de una herramienta original que modela a la industria como una red de redes de valor. Se espera que la misma permita:
+
+\begin{itemize}
+  \item Un seguimiento integral de la dinámica productiva sectorial y regional.
+  \item El diseño de propuestas y la evaluación de medidas y políticas públicas.
+  \item La elaboración de diagnósticos para la toma de decisiones en materia de desarrollo económico.
+\end{itemize}
+
+\section*{Redes Productivas}
+
+El sistema de información propuesto, en esencia, consiste en representar la estructura de la industria nacional en una red, y en revestir esta estructura con información de diversos tipos: económica, social, territorial y tecnológica. 
+
+El concepto original de la herramienta es que \textbf{la información es analizada en el contexto de la red}. Teniendo esto en mente, se lo pasará a explicar en detalle.
+
+\subsection*{Una definición formal de red}
+
+Los \textit{grafos} son objetos matemáticos que modelan conexiones entre elementos de un conjunto; están compuestos por nodos y relaciones. Muchas estructuras naturales y hechas por el hombre pueden representarse mediante grafos. Con la industria es factible hacerlo. Los nodos bien pueden ser actividades industriales y las relaciones, pares de actividades inmediatamente conectadas en una cadena de valor. \textit{Las relaciones se definen a partir de parejas de nodos}.
+
+Un grafo introduce una noción de \textit{distancia}. Se mide en la cantidad de eslabones por los que hay que pasar para ir de un nodo a otro. Dos actividades que son parte de un mismo complejo productivo estarán cerca en comparación a dos actividades que se encuentren en complejos distintos.
+
+La Teoría de Grafos se ha encargado de estudiar en profundidad a estos objetos. Aparte de la distancia, ha desarrollado un sinnúmero de medidas y procedimientos que ponen en evidencia propiedades de la red, no todas observables a simple vista. Expresar a la industria en este lenguaje nos dirá hechos que no sabemos de ella.
+
+Normalmente se da el caso de nodos con más vecinos —o conexiones— que otros. Al número de conexiones que un nodo tiene se le llama \textit{grado del nodo}. Una medida básica es la \textit{distribución de grados}, o en otras palabras, la cantidad de nodos según el número de conexiones. Las redes sociales presentan una distribución en la que pocas personas conocen a muchas personas, y muchas simplemente conocen a pocas.
+
+A los nodos que acaparan significativamente más conexiones que el resto se los denomina \textit{hubs}, anglicismo para concentrador o conector. Gracias a estos, moverse de un nodo a otro en la red resulta en caminos cortos en comparación a una red en la que no existen: los hubs se comportan como atajos.
+
+Cuando una red no tiene hubs muestra una distribución más o menos pareja, en la que en promedio todos los nodos cuentan la misma cantidad de vecinos, encontrándose en pie de igualdad. En este tipo de grafo el camino más directo de un nodo cualquiera a otro desemboca en altas chances de uno largo.
+
+Hablamos de camino más directo porque en un grafo es común que dos nodos estén unidos por varios recorridos posibles. Si se hace el promedio de los caminos más directos entre todos los pares de nodos posibles, se obtiene el \textit{diámetro de la red}. Esta propiedad global da una idea de la movilidad en la red.
+
+Los hubs hacen que el diámetro sea pequeño, reducen las distancias en la red. Sin embargo se trata de una ventaja cuyo coste es el siguiente: el impacto de la anulación de un hub en la red es muy grande. Una red en la que no hay nodos mucho más importantes que otros es más robusta, cuesta hacerle daño al retirarle nodos a pesar de haberlos elegido con tal intención.
+
+La forma y las propiedades de la red de la industria argentina, la identificación de nodos que deben recibir un cuidado prioritario, son ejemplos de interrogantes que esperan a ser contestados.
+
+\subsection*{Más tipos de nodos}
+
+Se pueden agregar distintas clases de nodos en la representación de la industria para hacerla cada vez más realista. El sistema de información propuesto en su versión más básica agrega al ejemplo que hemos venido utilizando —la red de actividades industriales—, productos; en una configuración que se conoce como \textit{grafo bipartito}: las actividades se conectan exclusivamente a productos, y los productos a actividades, sin posibilidad de que nodos del mismo tipo se relacionen directamente.
+
+El sistema dispone de una colección de actividades y otra de productos, extraídas respectivamente de la Clasificación Internacional Industrial Uniforme y del Sistema Armonizado. Dadas las colecciones, sus elementos pueden ser conectados entre sí relevando el estado de la industria. Es una característica fundamental del sistema el implementar nomencladores utilizados tanto por organismos nacionales como internacionales para la identificación de los nodos; es lo que posteriormente abre las puertas a introducir datos provenientes de diversas fuentes.
+
+Las actividades industriales se conectan con productos discriminando si son insumos, en \textbf{relación de aprovisionamiento}, o si son productos (resultados) de la actividad, en \textbf{relación de producción}. Este rompecabezas será armado a partir de informes sectoriales y regionales existentes, generados por organismos como el Ministerio de Economía, la AFIP, entre otros.
+
+En el modelo considerado, las actividades son \textbf{procesos de transformación} y los productos \textbf{materia} capaz de ser transformada. A su vez las relaciones de aprovisionamiento y producción mencionadas explicitan direcciones preferenciales dentro de la red. Estos conceptos son requeridos para definir un flujo de materia en una red de procesos.
+
+En la red industrial la materia prima avanza desde su estado primigenio hacia productos terminados por caminos de la red que van agregando valor en cada proceso.
+
+En la red de actividades industriales primera no habíamos recurrido a relaciones direccionadas. Cuando un grafo las incorpora, se lo conoce como \textit{grafo dirigido}.
+
+\subsection*{El significado de las estadísticas}
+
+Las estadísticas vienen en forma de \textit{series temporales}, se refieren a la evolución temporal de indicadores. A la versión sencilla del modelo en cuestión le resultan de particular interés dos tipos de indicadores: cantidades y valores. A partir de estos luego se pueden calcular otros, como precios unitarios.
+
+Aprovechando que los nodos de la red están identificados por nomencladores, se le adjuntan a cada uno series temporales que le correspondan. Asimismo se pueden asociar series a las relaciones entre nodos. La semántica detrás de esta práctica hace que las series de cantidades aplicadas a nodos signifiquen el stock de los productos o el nivel de actividad de los procesos, y que las aplicadas a relaciones, la producción o el consumo del material que circula por ellas. En definitiva los nodos son volúmenes disponibles y las relaciones caudal transportado.
+
+Usualmente donde habrá un flujo de cantidad material habrá un contra-flujo de valor monetario.
+
+Anteriormente dijimos que el grafo introducía una noción de distancia entre nodos. Ahora decimos que podemos asociar series temporales a los nodos. Entonces hemos utilizado el grafo para establecer una noción de distancia entre series temporales. Aquí yace el potencial de la herramienta. No es lo mismo analizar estadísticas ``sueltas'' que asentadas en una estructura.
+
+Las series temporales pueden estudiarse con técnicas provenientes del Análisis de Series Temporales. Una de las principales medidas que se pueden realizar es la \textit{correlación} entre dos series, cuánto están conectados causalmente dos fenómenos. Puede verse en qué grado el aumento o la disminución de la producción de cierto producto influye sobre la otro y con cuánto retraso temporal.
+
+Si nos servimos de las estadísticas de comercio exterior, podríamos procesarlas para descubrir correlaciones entre el comercio de distintos productos. Esto supone el análisis cruzado de estadísticas mediante técnicas de Minería de Datos. Pero minar datos \textbf{sueltos} es pura fuerza bruta comparado con los análisis que se pueden efectuar teniendo en cuenta a la red.
+
+Armar la red es incorporar información de la realidad en el sistema. Obtener un mapa en el que se lee cuáles actividades se afectan directamente (primeros vecinos), cuáles indirectamente por medio de una actividad intermediaria (segundos vecinos), así profundizando hasta donde se lo desee.
+
+Se podrá discernir entre situaciones como la suba del precio de importación de un insumo de una actividad crítica —un hub— de la suba del precio de una actividad marginal en la red (con escasas conexiones). Desde ya que la propagación de costos a productos finales será distinta en cada caso.
+
+\subsection*{Aún más posibilidades}
+
+Es posible continuar enriqueciendo el modelo adicionando nuevas clases de nodos. Cuatro muy informativas son territorios, labores, mercados y tecnologías. La primera permite manejar datos geográficos para complementar el semblante sectorial del sistema con el regional. La segunda agrega una capa de recursos humanos al mapa, ya que las actividades industriales también los toman como insumos. Mercados tenemos externos e internos, son orígenes y destinos de productos, y una abstracción del comercio: se tratan de partes de la red desconocidas en detalle. Por último, nodos que describen tecnologías existentes, cuyas relaciones con las actividades representan el respectivo grado de transferencia tecnológica.
+
+Vale la pena y está dentro de las posibilidades del sistema distinguir los nodos de productos en subcategorías tales como bienes de capital, insumos y energía.
+
+El grafo de la industria es capaz de asimilar tipos de información de los más diversos. Un modelo más allá de lo simple, holístico, por el momento es una exageración; pero de ninguna forma nos hemos referido a datos que el Estado no recabe a través de la AFIP o el INDEC en la actualidad, o tenga la posibilidad de hacerlo en un futuro si se lo propone. En todo caso los obstáculos se encuentran en la articulación entre sus propios organismos.
+
+\subsection*{La dinámica de la red}
+
+Hay un tipo de análisis dentro del campo de la teoría de grafos que estudia los cambios estructurales de las redes en el tiempo. Los grafos de la realidad están vivos: los nodos surgen y desaparecen; aún más, las conexiones entre ellos se encuentran en permanente alteración.
+
+De la misma forma en la que una persona que conoce a muchas personas tiene mayores chances de hacerse de un contacto nuevo que quien conoce a muy pocas, una actividad o producto muy conectado tiene altas probabilidades de participar en nuevas relaciones en el futuro. Es el concepto de \textit{conexión preferencial}. Desde el punto de vista de la planificación industrial, predicciones de esta índole estiman —sobre nodos individuales— demandas por relaciones inexistentes en la actualidad.
+
+Por otro lado podría utilizarse al sistema para proyectar desarrollos de nuevos complejos productivos. Suponiendo que se quiera producir determinado producto íntegramente en el país y que para concretar tal objetivo sea menester establecer nuevos nodos y relaciones, se los detallaría sobre la red vigente para estudiar una forma ordenada de llevar el desarrollo adelante, inclusive previendo el fortalecimiento de partes existentes de la red.
+
+\subsection*{Los estratos de agregación}
+
+Hasta ahora se ha hablado en relación 1-a-1 entre nodos y nomencladores: de una red agregada, porque cada producto y cada actividad aparece una sola vez en el grafo. El sistema también puede ser dirigido hacia el otro extremo, bajando al nivel de los agentes económicos, si considera perfiles de empresas.
+
+Es aceptable comenzar desarrollando el sistema para administrar información agregada, sobre todo porque se la encuentra con mayor facilidad en este formato. Sería ideal que la información desagregada se vuelque en los perfiles de empresas y que sea el propio sistema quien la agregue.
+
+Existen posibilidades de intentar una aproximación: que el sistema siga de cerca aunque sea a las grande empresas del país, una cifra más asible que si se tratara de todas las empresas que hay; después de todo el principio de Pareto nos indica que este grupo reducido de empresas controla la mayor porción del mercado. Eso alcanzaría para practicar algunas estimaciones.
+
+La red desagregada podría visualizarse como una ``red social'' de empresas. Cada empresa agrupa actividades industriales (tal cual figuran en su inscripción en la AFIP). Nótese que en general las actividades ahora se repiten, debido a las empresas que se dedican a lo mismo. Las actividades producen y consumen productos. Dos empresas tendrán una relación si la actividad de una produce un producto que la actividad de la otra consume—una manera larga de decir que dos empresas tienen una relación comercial. Relaciones que consisten en un mismo tipo de producto hacen que estos se también se repitan.
+
+Las facturas electrónicas serán un buen recurso para trazar la red social de las empresas.
+
+La agregación sucede cuando se integran los datos de las actividades y los productos de las empresas, discriminando por nomenclador. Este procedimiento también genera la estructura de la red agregada: esta emerge del comportamiento de los agentes. Si un mismo tipo de producto fue intercambiado entre empresas para ser usado en actividades diferentes, el grafo agregado lo reflejará conectando al producto con todas las actividades en las que este participó. Las magnitudes de las relaciones será función de la frecuencia e intensidad de tales intercambios.
+
+Las actividades de las empresas podrán asociarse a localidades geográficas. El plano desagregado le confiere especial interés a la información territorial, permitiría analizar y optimizar la logística de cargas. Los distintos estratos de agregación se enfocarían en provincias y regiones para trabajar sobre estrategias coyunturales. Permitiéndonos pensar en grande, el sistema de información serviría para planificar la integración productiva del MERCOSUR de ser usado por el resto de los países socios.
+
+Un detalle no menor es que los agentes económicos podrían usar la red social para obtener información personalizada de su contexto productivo, buscar clientes y proveedores, administrar operaciones comerciales, recibir sugerencias de inversión. Esto redundaría en la toma de decisiones más informadas para los agentes.
+
+%\subsection*{Consideraciones informáticas}
+
+%El sistema de información debe ser software libre. Los motivos por los cuales debe ser así ya han recibido amplia difusión como para ser mencionados. Se trata también de una política de Estado.
+
+%Por otro lado, deberá proveer la mayor cantidad posible de datos abiertos, guardándose los que se consideren secreto de Estado o violen la privacidad de las empresas. Los mismos se deberán disponer de manera que puedan ser descargados y/o accedidos a través de una interfaz de programación de aplicaciones (ser consultados por otro sistema, es lo que comúnmente se conoce como API). Este requisito importa porque le permite a terceros analizar los datos crudos con técnicas no convencionales o no previstas en el desarrollo.
+
+\section*{Conclusiones}
+
+% planificación económica
+% desarrollo regional y provincial
+% desarrollo sectorial
+% exportación/importación
+% logística de cargas
+% coyuntura regional (interno)
+% inserción comercial (externo)
+
+La combinación de la teoría de grafos y el análisis de series temporales aplicada al diseño de políticas de desarrollo industrial promete superar con creces a los análisis económicos convencionales.
+
+La herramienta propuesta modela la industria para generar información sistematizada relevante para la planificación económica, el desarrollo provincial y regional, el desarrollo sectorial, la integración productiva, la inserción comercial en mercados externos, la substitución de importaciones, la logística de cargas.
+
+La herramienta automatiza diagnósticos que indican y \textit{priorizan} políticas económicas, e informa sobre sus resultados.
+
+Será necesario una integración transversal de los sistemas de información de los diversos organismos del Estado para producir políticas públicas de segunda generación.
+
+\end{document}

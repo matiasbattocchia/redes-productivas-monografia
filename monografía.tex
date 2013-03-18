@@ -3,6 +3,19 @@
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenx}
 
+\newcommand{\executeiffilenewer}[3]{%
+  \ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+  {\pdffilemoddate{#2}}>0%
+  {\immediate\write18{#3}}\fi%
+}
+
+\newcommand{\includesvg}[1]{%
+  \executeiffilenewer{#1.svg}{#1.pdf}%
+  {inkscape -z -D --file=#1.svg %
+  --export-pdf=#1.pdf --export-latex}%
+  \input{#1.pdf_tex}%
+}
+
 \begin{document}
 
 \title{Sistema de Información de Redes Productivas\\\textsc{Un mapa de la economía nacional}}
@@ -13,7 +26,7 @@
 
 \section*{Introducción}
 
-El Gobierno Nacional dentro del marco del Plan Estratégico Industrial 2020 ha asumido el compromiso de promover la industria nacional.
+El Gobierno Nacional dentro del marco del Plan Estratégico Industrial 2020 ha asumido el compromiso de promover la industria nacional. \marginpar{Este párrafo debe ser mejorado.}
 
 Con el fin de aportar a este proceso, se presentan las bases de una herramienta original que modela a la industria como una red de redes de valor. Se espera que la misma permita:
 
@@ -23,31 +36,39 @@ Con el fin de aportar a este proceso, se presentan las bases de una herramienta 
   \item La elaboración de diagnósticos para la toma de decisiones en materia de desarrollo económico.
 \end{itemize}
 
+El sistema de información propuesto, en esencia, consiste en representar la estructura de la industria nacional como un \textit{grafo} —definido a continuación—, y en revestir esta representación con información de diversos tipos: económica, social, territorial y tecnológica. \marginpar{Esta es la primera de las dos ideas fundamentales detrás del sistema.}
+
+El grafo de la red de cadenas de valor es utilizado por el sistema para \textbf{situar el análisis de datos en el contexto de la red}. \marginpar{Esta es la segunda idea: Conocer las relaciones subrepticias entre los datos por medio del grafo.}
+
+% Teniendo esto en mente, se lo pasará a explicar en detalle.
+
 \section*{Redes Productivas}
-
-El sistema de información propuesto, en esencia, consiste en representar la estructura de la industria nacional en una red, y en revestir esta estructura con información de diversos tipos: económica, social, territorial y tecnológica. 
-
-El concepto original de la herramienta es que \textbf{la información es analizada en el contexto de la red}. Teniendo esto en mente, se lo pasará a explicar en detalle.
 
 \subsection*{Una definición formal de red}
 
-Los \textit{grafos} son objetos matemáticos que modelan conexiones entre elementos de un conjunto; están compuestos por nodos y relaciones. Muchas estructuras naturales y hechas por el hombre pueden representarse mediante grafos. Con la industria es factible hacerlo. Los nodos bien pueden ser actividades industriales y las relaciones, pares de actividades inmediatamente conectadas en una cadena de valor. \textit{Las relaciones se definen a partir de parejas de nodos}.
+\begin{figure}
+  \centering
+  %\def\svgwidth{\columnwidth}
+  \includesvg{grafo}
+  \label{grafo}
+  \caption{Un grafo feliz.}
+\end{figure}
 
-Un grafo introduce una noción de \textit{distancia}. Se mide en la cantidad de eslabones por los que hay que pasar para ir de un nodo a otro. Dos actividades que son parte de un mismo complejo productivo estarán cerca en comparación a dos actividades que se encuentren en complejos distintos.
+Los \textit{grafos} son objetos matemáticos que modelan conexiones entre elementos de un conjunto; están compuestos por \textit{nodos} y \textit{relaciones} (figura \ref{grafo}). Muchas estructuras naturales y hechas por el hombre pueden representarse mediante grafos. \marginpar{Ejemplos no estarían de más.} Con la industria también es factible hacerlo: Los nodos bien pueden ser actividades industriales y las relaciones —\textit{definidas a partir de parejas de nodos}—, pares de actividades inmediatamente conectadas (figura \ref{cadena}).
 
-La Teoría de Grafos se ha encargado de estudiar en profundidad a estos objetos. Aparte de la distancia, ha desarrollado un sinnúmero de medidas y procedimientos que ponen en evidencia propiedades de la red, no todas observables a simple vista. Expresar a la industria en este lenguaje nos dirá hechos que no sabemos de ella.
+La Teoría de Grafos se ha encargado de estudiar en profundidad a estos objetos. Ha desarrollado un sinnúmero de medidas y procedimientos que ponen en evidencia características de los mismos. Mencionaremos ahora algunos de sus conceptos con el fin de ilustrar la teoría en relación al análisis del aparato productivo nacional.
 
-Normalmente se da el caso de nodos con más vecinos —o conexiones— que otros. Al número de conexiones que un nodo tiene se le llama \textit{grado del nodo}. Una medida básica es la \textit{distribución de grados}, o en otras palabras, la cantidad de nodos según el número de conexiones. Las redes sociales presentan una distribución en la que pocas personas conocen a muchas personas, y muchas simplemente conocen a pocas.
+Un grafo introduce una noción de \textit{distancia}. Esta se mide en la cantidad de vínculos por los que hay que transitar para ir de un nodo a otro (figura \ref{distancia}). Es común que dos nodos estén conectados por varios posibles caminos; cuando hablamos de distancia nos estamos refiriendo al camino más directo. En el sistema la distancia indica la proximidad entre actividades industriales. \marginpar{Y la proximidad el grado de influencia.}
 
-A los nodos que acaparan significativamente más conexiones que el resto se los denomina \textit{hubs}, anglicismo para concentrador o conector. Gracias a estos, moverse de un nodo a otro en la red resulta en caminos cortos en comparación a una red en la que no existen: los hubs se comportan como atajos.
+% La \textit{excentricidad} de un nodo está dada por la distancia a su nodo más lejano en el grafo. Los nodos con alta excentricidad se ubican en la \textbf{periferia} de la red, en cambio los que poseen baja excentricidad conforman el \textbf{centro}.
 
-Cuando una red no tiene hubs muestra una distribución más o menos pareja, en la que en promedio todos los nodos cuentan la misma cantidad de vecinos, encontrándose en pie de igualdad. En este tipo de grafo el camino más directo de un nodo cualquiera a otro desemboca en altas chances de uno largo.
+Al número de \textit{primeros vecinos} (nodos a distancia 1) que un nodo tiene se le llama \textit{grado} (figura \ref{grado}). Normalmente el grado varía de nodo a nodo. En determinadas redes se encuentran nodos que acaparan significativamente más conexiones que el promedio; a estos se los denomina \textit{hubs}, anglicismo para concentrador o conector (figura \ref{hub}).
 
-Hablamos de camino más directo porque en un grafo es común que dos nodos estén unidos por varios recorridos posibles. Si se hace el promedio de los caminos más directos entre todos los pares de nodos posibles, se obtiene el \textit{diámetro de la red}. Esta propiedad global da una idea de la movilidad en la red.
+En las redes sociales las personas ``populares'' cumplen el rol de hubs. Aparte de poseer un gran número de contactos (y debido a esto) suelen oficiar de puente entre distintas comunidades, mejorando la conectividad en la red. \marginpar{Los hubs son en parte responsables de los \textit{6 grados de separación}. Sin ellos el mundo no sería tan pequeño.} El rasgo distintivo de una comunidad es ser un conjunto de personas que se conocen entre sí: nodos agrupados, mutuamente interconectados. En el sistema lo más parecido a las comunidades serían las cadenas de valor. Las actividades industriales altamente conectadas que se comportan como nexo entre cadenas, de existir, serían hubs. \marginpar{Estamos suponiendo que la red industrial es del tipo \textit{scale-free}, aunque probable, podría no ser cierto.}
 
-Los hubs hacen que el diámetro sea pequeño, reducen las distancias en la red. Sin embargo se trata de una ventaja cuyo coste es el siguiente: el impacto de la anulación de un hub en la red es muy grande. Una red en la que no hay nodos mucho más importantes que otros es más robusta, cuesta hacerle daño al retirarle nodos a pesar de haberlos elegido con tal intención.
+Hacemos hincapié en los hubs porque son \textbf{la fortaleza y la debilidad} de las redes que se caracterizan por tenerlos. Como se dijo, hacen un aporte importante a la conectividad de la red; sin embargo el coste de esta ventaja es una red susceptible a fallos ante la anulación o al mal funcionamiento de sus hubs.
 
-La forma y las propiedades de la red de la industria argentina, la identificación de nodos que deben recibir un cuidado prioritario, son ejemplos de interrogantes que esperan a ser contestados.
+Expresar a la industria en el lenguaje de los grafos nos permitirá tomar conocimiento acerca de su topología o forma —particularmente identificar hubs en en la misma— y de un gran número de sus propiedades. Las acciones que se deben tomar para impulsar su desarrollo, las prioridades de aplicación, dependen fuertemente de las características de la red. \marginpar{Añadir acciones concretas que conviene realizar en base a esta información.}
 
 \subsection*{Más tipos de nodos}
 
@@ -115,11 +136,13 @@ Las actividades de las empresas podrán asociarse a localidades geográficas. El
 
 Un detalle no menor es que los agentes económicos podrían usar la red social para obtener información personalizada de su contexto productivo, buscar clientes y proveedores, administrar operaciones comerciales, recibir sugerencias de inversión. Esto redundaría en la toma de decisiones más informadas para los agentes.
 
-%\subsection*{Consideraciones informáticas}
+\subsection*{Una base de datos pública y abierta}
 
-%El sistema de información debe ser software libre. Los motivos por los cuales debe ser así ya han recibido amplia difusión como para ser mencionados. Se trata también de una política de Estado.
+El sistema deberá organizar y almacenar una gran cantidad de datos para su funcionamiento. Tanto los datos crudos como los procesados \textbf{considerados públicos} podrán ser consultados y/o descargados para uso general a través de la interfaz web del sistema, mientras que al mismo tiempo estarán disponibles a través de un \textit{servicio web} para ser accedidos por otros sistemas informáticos.
 
-%Por otro lado, deberá proveer la mayor cantidad posible de datos abiertos, guardándose los que se consideren secreto de Estado o violen la privacidad de las empresas. Los mismos se deberán disponer de manera que puedan ser descargados y/o accedidos a través de una interfaz de programación de aplicaciones (ser consultados por otro sistema, es lo que comúnmente se conoce como API). Este requisito importa porque le permite a terceros analizar los datos crudos con técnicas no convencionales o no previstas en el desarrollo.
+En la actualidad el acceso a datos es restringido principalmente porque no se encuentran compartidos o no lo están en un formato apto para máquinas: informes en PDF, DOC, XLS, fáciles de comprender para el humano pero costosos para la computadora.
+
+El sistema ofrece la posibilidad de abrir el juego a terceros —sobre todo a la academia— para que los datos sirvan para contrastar modelos económicos, crear indicadores, probar nuevas ideas.
 
 \section*{Conclusiones}
 

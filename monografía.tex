@@ -26,7 +26,7 @@
 
 \section*{Introducción}
 
-El Gobierno Nacional dentro del marco del Plan Estratégico Industrial 2020 ha asumido el compromiso de promover la industria nacional. \marginpar{Este párrafo debe ser mejorado.}
+El Gobierno Nacional dentro del marco del Plan Estratégico Industrial 2020 ha asumido el compromiso de promover la industria nacional\footnote{Este párrafo debe ser mejorado.}.
 
 Con el fin de aportar a este proceso, se presentan las bases de una herramienta original que modela a la industria como una red de redes de valor. Se espera que la misma permita:
 
@@ -36,11 +36,9 @@ Con el fin de aportar a este proceso, se presentan las bases de una herramienta 
   \item La elaboración de diagnósticos para la toma de decisiones en materia de desarrollo económico.
 \end{itemize}
 
-El sistema de información propuesto, en esencia, consiste en representar la estructura de la industria nacional como un \textit{grafo} —definido a continuación—, y en revestir esta representación con información de diversos tipos: económica, social, territorial y tecnológica. \marginpar{Esta es la primera de las dos ideas fundamentales detrás del sistema.}
+El sistema de información propuesto, en esencia, consiste en representar la estructura de la industria nacional como un \textit{grafo} —definido a continuación—, y en revestir esta representación con información de diversos tipos: económica, social, territorial y tecnológica\footnote{Esta es la primera de las dos ideas fundamentales detrás del sistema.}.
 
-El grafo de la red de cadenas de valor es utilizado por el sistema para \textbf{situar el análisis de datos en el contexto de la red}. \marginpar{Esta es la segunda idea: Conocer las relaciones subrepticias entre los datos por medio del grafo.}
-
-% Teniendo esto en mente, se lo pasará a explicar en detalle.
+El grafo de la red de cadenas de valor es utilizado por el sistema para \textbf{situar el análisis de datos en el contexto de la red}\footnote{Esta es la segunda idea: Conocer las relaciones subrepticias entre los datos por medio del grafo.}.
 
 \section*{Redes Productivas}
 
@@ -54,21 +52,53 @@ El grafo de la red de cadenas de valor es utilizado por el sistema para \textbf{
   \caption{Un grafo feliz.}
 \end{figure}
 
-Los \textit{grafos} son objetos matemáticos que modelan conexiones entre elementos de un conjunto; están compuestos por \textit{nodos} y \textit{relaciones} (figura \ref{grafo}). Muchas estructuras naturales y hechas por el hombre pueden representarse mediante grafos. \marginpar{Ejemplos no estarían de más.} Con la industria también es factible hacerlo: Los nodos bien pueden ser actividades industriales y las relaciones —\textit{definidas a partir de parejas de nodos}—, pares de actividades inmediatamente conectadas (figura \ref{cadena}).
+Los \textit{grafos} son objetos matemáticos que modelan conexiones entre elementos de un conjunto; están compuestos por \textit{nodos} y \textit{relaciones} (figura \ref{grafo}). Muchas estructuras naturales y hechas por el hombre pueden representarse mediante grafos\footnote{Ejemplos no estarían de más.}. Con la industria también es factible hacerlo: Los nodos bien pueden ser actividades industriales y las relaciones —\textit{definidas a partir de parejas de nodos}—, pares de actividades inmediatamente conectadas (figura \ref{cadena}).
+
+\begin{figure}
+  \centering
+  %\def\svgwidth{\columnwidth}
+  \includesvg{cadena}
+  \label{cadena}
+  \caption{Un grafo feliz.}
+\end{figure}
 
 La Teoría de Grafos se ha encargado de estudiar en profundidad a estos objetos. Ha desarrollado un sinnúmero de medidas y procedimientos que ponen en evidencia características de los mismos. Mencionaremos ahora algunos de sus conceptos con el fin de ilustrar la teoría en relación al análisis del aparato productivo nacional.
 
-Un grafo introduce una noción de \textit{distancia}. Esta se mide en la cantidad de vínculos por los que hay que transitar para ir de un nodo a otro (figura \ref{distancia}). Es común que dos nodos estén conectados por varios posibles caminos; cuando hablamos de distancia nos estamos refiriendo al camino más directo. En el sistema la distancia indica la proximidad entre actividades industriales. \marginpar{Y la proximidad el grado de influencia.}
+\begin{figure}
+  \centering
+  %\def\svgwidth{\columnwidth}
+  \includesvg{distancia}
+  \label{distancia}
+  \caption{Un grafo feliz.}
+\end{figure}
+
+Un grafo introduce una noción de \textit{distancia}. Esta se mide en la cantidad de vínculos por los que hay que transitar para ir de un nodo a otro (figura \ref{distancia}). Es común que dos nodos estén conectados por varios posibles caminos; cuando hablamos de distancia nos estamos refiriendo al camino más directo. En el sistema la distancia indica la proximidad entre actividades industriales\footnote{Y la proximidad el grado de influencia.}.
 
 % La \textit{excentricidad} de un nodo está dada por la distancia a su nodo más lejano en el grafo. Los nodos con alta excentricidad se ubican en la \textbf{periferia} de la red, en cambio los que poseen baja excentricidad conforman el \textbf{centro}.
 
+\begin{figure}
+  \centering
+  %\def\svgwidth{\columnwidth}
+  \includesvg{grado}
+  \label{grado}
+  \caption{Un grafo feliz.}
+\end{figure}
+
 Al número de \textit{primeros vecinos} (nodos a distancia 1) que un nodo tiene se le llama \textit{grado} (figura \ref{grado}). Normalmente el grado varía de nodo a nodo. En determinadas redes se encuentran nodos que acaparan significativamente más conexiones que el promedio; a estos se los denomina \textit{hubs}, anglicismo para concentrador o conector (figura \ref{hub}).
 
-En las redes sociales las personas ``populares'' cumplen el rol de hubs. Aparte de poseer un gran número de contactos (y debido a esto) suelen oficiar de puente entre distintas comunidades, mejorando la conectividad en la red. \marginpar{Los hubs son en parte responsables de los \textit{6 grados de separación}. Sin ellos el mundo no sería tan pequeño.} El rasgo distintivo de una comunidad es ser un conjunto de personas que se conocen entre sí: nodos agrupados, mutuamente interconectados. En el sistema lo más parecido a las comunidades serían las cadenas de valor. Las actividades industriales altamente conectadas que se comportan como nexo entre cadenas, de existir, serían hubs. \marginpar{Estamos suponiendo que la red industrial es del tipo \textit{scale-free}, aunque probable, podría no ser cierto.}
+\begin{figure}
+  \centering
+  %\def\svgwidth{\columnwidth}
+  \includesvg{hubs}
+  \label{hubs}
+  \caption{Un grafo feliz.}
+\end{figure}
+
+En las redes sociales las personas ``populares'' cumplen el rol de hubs. Aparte de poseer un gran número de contactos (y debido a esto) suelen oficiar de puente entre distintas comunidades, mejorando la conectividad en la red\footnote{Los hubs son en parte responsables de los \textit{6 grados de separación}. Sin ellos el mundo no sería tan pequeño.}. El rasgo distintivo de una comunidad es ser un conjunto de personas que se conocen entre sí: nodos agrupados, mutuamente interconectados. En el sistema lo más parecido a las comunidades serían las cadenas de valor. Las actividades industriales altamente conectadas que se comportan como nexo entre cadenas, de existir, serían hubs\footnote{Estamos suponiendo que la red industrial es del tipo \textit{scale-free}, aunque probable, podría no ser cierto.}.
 
 Hacemos hincapié en los hubs porque son \textbf{la fortaleza y la debilidad} de las redes que se caracterizan por tenerlos. Como se dijo, hacen un aporte importante a la conectividad de la red; sin embargo el coste de esta ventaja es una red susceptible a fallos ante la anulación o al mal funcionamiento de sus hubs.
 
-Expresar a la industria en el lenguaje de los grafos nos permitirá tomar conocimiento acerca de su topología o forma —particularmente identificar hubs en en la misma— y de un gran número de sus propiedades. Las acciones que se deben tomar para impulsar su desarrollo, las prioridades de aplicación, dependen fuertemente de las características de la red. \marginpar{Añadir acciones concretas que conviene realizar en base a esta información.}
+Expresar a la industria en el lenguaje de los grafos nos permitirá tomar conocimiento acerca de su topología o forma —particularmente identificar hubs en en la misma— y de un gran número de sus propiedades. Las acciones que se deben tomar para impulsar su desarrollo, las prioridades de aplicación, dependen fuertemente de las características de la red\footnote{Añadir acciones concretas que conviene realizar en base a esta información.}.
 
 \subsection*{Más tipos de nodos}
 

@@ -2,6 +2,8 @@
 
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenx}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{graphicx}
 
 \newcommand{\executeiffilenewer}[3]{%
   \ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
@@ -11,16 +13,14 @@
 
 \newcommand{\includesvg}[1]{%
   \executeiffilenewer{#1.svg}{#1.pdf}%
-  {inkscape -z -D --file=#1.svg %
-  --export-pdf=#1.pdf --export-latex}%
+  {inkscape -z -D --file=#1.svg --export-pdf=#1.pdf --export-latex}%
   \input{#1.pdf_tex}%
 }
 
 \begin{document}
 
 \title{Sistema de Información de Redes Productivas\\\textsc{Un mapa de la economía nacional}}
-\author{Matías Battocchia}
-\author{Gonzalo Flores Kemec}
+\author{Matías Battocchia \and Gonzalo Flores Kemec}
 
 \maketitle
 
@@ -46,9 +46,10 @@ El grafo de la red de cadenas de valor es utilizado por el sistema para \textbf{
 
 \begin{figure}
   \centering
+  %\def\svgwidth{\columnwidth}
   \includesvg{grafo}
-  \label{grafo}
   \caption{Un grafo feliz.}
+  \label{grafo}
 \end{figure}
 
 Los \textit{grafos} son objetos matemáticos que modelan conexiones entre elementos de un conjunto; están compuestos por \textit{nodos} y \textit{relaciones} (figura \ref{grafo}). Muchas estructuras naturales y hechas por el hombre pueden representarse mediante grafos\footnote{Ejemplos no estarían de más.}. Con la industria también es factible hacerlo: Los nodos bien pueden ser actividades industriales y las relaciones —\textit{definidas a partir de parejas de nodos}—, pares de actividades inmediatamente conectadas (figura \ref{cadena}).
@@ -56,8 +57,8 @@ Los \textit{grafos} son objetos matemáticos que modelan conexiones entre elemen
 \begin{figure}
   \centering
   \includesvg{cadena}
-  \label{cadena}
   \caption{Un grafo feliz.}
+  \label{cadena}
 \end{figure}
 
 La Teoría de Grafos se ha encargado de estudiar en profundidad a estos objetos. Ha desarrollado un sinnúmero de medidas y procedimientos que ponen en evidencia características de los mismos. Mencionaremos ahora algunos de sus conceptos con el fin de ilustrar la teoría en relación al análisis del aparato productivo nacional.
@@ -65,8 +66,8 @@ La Teoría de Grafos se ha encargado de estudiar en profundidad a estos objetos.
 \begin{figure}
   \centering
   \includesvg{distancia}
-  \label{distancia}
   \caption{Un grafo feliz.}
+  \label{distancia}
 \end{figure}
 
 Un grafo introduce una noción de \textit{distancia}. Esta se mide en la cantidad de vínculos por los que hay que transitar para ir de un nodo a otro (figura \ref{distancia}). Es común que dos nodos estén conectados por varios posibles caminos; cuando hablamos de distancia nos estamos refiriendo al camino más directo. En el sistema la distancia indica la proximidad entre actividades industriales\footnote{Y la proximidad el grado de influencia.}.
@@ -75,35 +76,35 @@ Un grafo introduce una noción de \textit{distancia}. Esta se mide en la cantida
 
 \begin{figure}
   \centering
-  \includesvg{grado}
-  \label{grado}
+  \includesvg{grados}
   \caption{Un grafo feliz.}
+  \label{grados}
 \end{figure}
 
-Al número de \textit{primeros vecinos} (nodos a distancia 1) que un nodo tiene se le llama \textit{grado} (figura \ref{grado}). Normalmente el grado varía de nodo a nodo. En determinadas redes se encuentran nodos que acaparan significativamente más conexiones que el promedio; a estos se los denomina \textit{hubs}, anglicismo para concentrador o conector (figura \ref{hub}).
+Al número de \textit{primeros vecinos} (nodos a distancia 1) que un nodo tiene se le llama \textit{grado} (figura \ref{grados}). Normalmente el grado varía de nodo a nodo. En determinadas redes se encuentran nodos que acaparan significativamente más conexiones que el promedio; a estos se los denomina \textit{hubs}, anglicismo para concentrador o conector (figura \ref{hubs}).
 
 \begin{figure}
   \centering
   \includesvg{hubs}
-  \label{hubs}
   \caption{Un grafo feliz.}
+  \label{hubs}
 \end{figure}
 
 En las redes sociales las personas ``populares'' cumplen el rol de hubs. Aparte de poseer un gran número de contactos (y debido a esto) suelen oficiar de puente entre distintas comunidades, mejorando la conectividad en la red\footnote{Los hubs son en parte responsables de los \textit{6 grados de separación}. Sin ellos el mundo no sería tan pequeño.}. El rasgo distintivo de una comunidad es ser un conjunto de personas que se conocen entre sí: nodos agrupados, mutuamente conectados. En el sistema lo más parecido a las comunidades serían las cadenas de valor. Las actividades industriales altamente conectadas que se comportan como nexo entre cadenas, de existir, serían hubs\footnote{Estamos suponiendo que la red industrial es del tipo \textit{scale-free}, aunque probable, podría no ser cierto.}.
 
 Hacemos hincapié en los hubs porque son \textbf{la fortaleza y la debilidad} de las redes que se caracterizan por tenerlos. Como se dijo, hacen un aporte importante a la conectividad de la red; sin embargo el coste de esta ventaja es una red susceptible a fallos ante la anulación o al mal funcionamiento de sus hubs.
 
-Expresar a la industria en el lenguaje de los grafos nos permitirá tomar conocimiento acerca de su topología o forma —particularmente identificar hubs en en la misma— y de un gran número de sus propiedades. Las acciones que se deben tomar para impulsar su desarrollo, las prioridades de aplicación, dependen fuertemente de las características de la red\footnote{Añadir acciones concretas que conviene realizar fundamentadas en este tipo de información.}.
+Expresar a la industria en el lenguaje de los grafos nos permitirá tomar conocimiento acerca de su topología o forma —particularmente identificar hubs en la misma— y de un gran número de sus propiedades. Las acciones que se deben tomar para impulsar su desarrollo, las prioridades de aplicación, dependen fuertemente de las características de la red\footnote{Añadir acciones concretas que conviene realizar fundamentadas en este tipo de información.}.
 
 \subsection*{Más tipos de nodos}
 
-Es posible añadir otras clases de nodos a la representación de la industria para hacerla más realista. Hasta ahora hicimos referencia únicamente a actividades industriales con el fin de allanar la introducción. El sistema de información propuesto en su versión más básica agrega a la red de actividades, productos, en una configuración que se conoce como \textit{grafo bipartito}: las actividades se conectan exclusivamente con productos, y los productos con actividades, sin posibilidad de que nodos del mismo tipo se relacionen directamente (figura \ref{bipartito}).
+Es posible añadir otras clases de nodos a la representación de la industria para hacerla más realista. Hasta ahora hicimos referencia únicamente a actividades industriales con el fin de allanar la introducción. El sistema de información propuesto en su versión básica agrega a la red de actividades, productos, en una configuración que se conoce como \textit{grafo bipartito}: las actividades se conectan exclusivamente con productos, y los productos con actividades, sin posibilidad de que nodos del mismo tipo se relacionen directamente (figura \ref{bipartito}).
 
 \begin{figure}
   \centering
   \includesvg{bipartito}
-  \label{bipartito}
   \caption{Un grafo feliz.}
+  \label{bipartito}
 \end{figure}
 
 El sistema dispone de una colección de \textbf{actividades} y otra de \textbf{productos}, creadas a partir de la \textsc{Clasificación Internacional Industrial Uniforme}\footnote{Nomenclatura en uso por la AFIP y la ONU para clasificar procesos productivos.} y del \textsc{Sistema Armonizado}\footnote{Nomenclatura ampliamente difundida en el comercio internacional para clasificar manufacturas.} respectivamente. Un extracto de estas clasificaciones puede verse en las tablas \ref{ciiu} y \ref{sa}. Sus elementos son las piezas interconectables con las que se construye el grafo de la industria (figura \ref{nomencladores}). Es una característica fundamental del sistema el implementar nomenclaturas utilizadas por organismos nacionales e internacionales para la identificación de los nodos; es lo que posteriormente permite incluir estadísticas con naturalidad, ya que estas se elaboran en base a las clasificaciones mencionadas.
@@ -111,55 +112,52 @@ El sistema dispone de una colección de \textbf{actividades} y otra de \textbf{p
 \begin{figure}
   \centering
   \includesvg{nomencladores}
-  \label{nomencladores}
   \caption{Un grafo feliz.}
+  \label{nomencladores}
 \end{figure}
 
 Las actividades industriales se conectan con productos en \textbf{relación de aprovisionamiento}, discriminando si son insumos, o en \textbf{relación de producción}, sin son manufacturas de la actividad. Este rompecabezas es armado a partir de informes sectoriales y regionales existentes, generados por organismos como el Ministerio de Economía y la AFIP, entre otros.
 
-En el modelo considerado, las actividades son \textbf{procesos de transformación} y los productos \textbf{materia} capaz de ser transformada. A su vez las relaciones de aprovisionamiento y producción establecen direcciones preferenciales dentro de la red: la materia fluye por caminos que van agregándole valor en cada proceso. 
+En el modelo considerado, las actividades son \textbf{procesos de transformación} y los productos \textbf{materia} capaz de ser transformada. A su vez las relaciones de aprovisionamiento y producción establecen direcciones preferenciales dentro de la red: la materia fluye por caminos que van agregándole valor en cada proceso.
 
 No habíamos recurrido a relaciones direccionadas en la sección anterior. Cuando un grafo las incorpora, se lo conoce como \textit{grafo dirigido} (figura \ref{dirigido}).
 
 \begin{figure}
   \centering
   \includesvg{dirigido}
-  \label{dirigido}
   \caption{Un grafo feliz.}
+  \label{dirigido}
 \end{figure}
 
 \subsection*{El significado de las estadísticas}
 
-% Semántica
-El grafo de la industria es un sustrato para las estadísticas.
-
-Por un lado, los nodos de la red están identificados por nomencladores, por otro lado, son los mismos nomencladores que se utilizan para elaborar estadísticas. se le adjuntan a cada uno series temporales que le correspondan. Asimismo se pueden asociar series a las relaciones entre nodos. La semántica detrás de esta práctica hace que las series de cantidades aplicadas a nodos signifiquen el stock de los productos o el nivel de actividad de los procesos, y que las aplicadas a relaciones, la producción o el consumo del material que circula por ellas. En definitiva los nodos son volúmenes disponibles y las relaciones caudal transportado.
-
-Usualmente donde habrá un flujo de cantidad material habrá un contra-flujo de valor monetario.
-
-Anteriormente dijimos que el grafo introducía una noción de distancia entre nodos. Ahora decimos que podemos asociar series temporales a los nodos. Entonces hemos utilizado el grafo para establecer una noción de distancia entre series temporales. Aquí yace el potencial de la herramienta. No es lo mismo analizar estadísticas ``sueltas'' que asentadas en una estructura.
-
 % Series Temporales
 
-
-
-El sistema hace  Estas se almacenan que se almacenan asociándolas a los elementos del grafo. El sistema se Las estadísticas vienen en forma de \textit{series temporales}, se refieren a la evolución temporal de indicadores. A la versión sencilla del modelo en cuestión le resultan de particular interés dos tipos de indicadores: \textbf{cantidades} y \textbf{valores}. A partir de estos luego se pueden calcular otros, como precios unitarios.
+La clase de estadísticas a las que el sistema recurre en mayor medida son \textit{series temporales}: secuencias de datos en el tiempo, típicamente espaciados en intervalos temporales uniformes (figura \ref{serie}). A la versión básica del sistema le resultan de particular interés la evolución temporal de dos tipos de indicadores: \textbf{cantidades} y \textbf{valores}; a partir de estos se pueden calcular otros, como \textbf{precios unitarios}\footnote{Quizás sea bueno incluir un ejemplo concreto de serie temporal útil.}.
 
 \begin{figure}
   \centering
   \includesvg{serie}
-  \label{serie}
   \caption{Un grafo feliz.}
+  \label{serie}
 \end{figure}
 
+% Semántica
+
+Decimos que el grafo de la industria se comporta como un sustrato para las estadísticas. Por un lado, los nodos de la red están identificados por nomencladores, por otro, las estadísticas sobre productos y actividades se elaboran a partir de los mismos nomencladores; el sistema entonces adquiere estadísticas y, según los nomencladores, las almacena adjuntándoselas a los nodos (figura \ref{series}). Esta práctica da lugar a una semántica: hace que las series de \textbf{cantidades} aplicadas a \textbf{nodos} signifiquen el \textbf{stock} de los productos o el \textbf{nivel de actividad} de los procesos, dependiendo del tipo de nodo. Asimismo es posible asociar series a las \textbf{relaciones} entre nodos; en este caso denotan la \textbf{producción} o el \textbf{consumo} de materia que circula por la red, dependiendo del tipo de relación. Usualmente donde hay un flujo de materia habrá un contra-flujo monetario, descripto por series temporales de \textbf{valores}.
+
+\begin{figure}
+  \centering
+  \includesvg{series}
+  \caption{Un grafo feliz.}
+  \label{series}
+\end{figure}
 
 % Análisis
 
-Las series temporales pueden estudiarse con técnicas provenientes del Análisis de Series Temporales. Una de las principales medidas que se pueden realizar es la \textit{correlación} entre dos series, cuánto están conectados causalmente dos fenómenos. Puede verse en qué grado el aumento o la disminución de la producción de cierto producto influye sobre la otro y con cuánto retraso temporal.
+Anteriormente dijimos que el grafo introduce una noción de distancia entre nodos. Acabamos de mencionar que podemos asociar series temporales a los nodos. Por lo tanto el grafo para establece una noción de distancia entre series temporales. Aquí yace el potencial de la herramienta: no es lo mismo analizar estadísticas ``sueltas'' que asentadas en una estructura. El grafo incorpora información de la realidad en el sistema, es un mapa en el que se lee cuáles productos y actividades se afectan directamente (primeros vecinos), cuáles indirectamente a través de un intermediario (segundos vecinos), así profundizando hasta donde se lo desee.
 
-Si nos servimos de las estadísticas de comercio exterior, podríamos procesarlas para descubrir correlaciones entre el comercio de distintos productos. Esto supone el análisis cruzado de estadísticas mediante técnicas de Minería de Datos. Pero minar datos \textbf{sueltos} es pura fuerza bruta comparado con los análisis que se pueden efectuar teniendo en cuenta a la red.
-
-Armar la red es incorporar información de la realidad en el sistema. Obtener un mapa en el que se lee cuáles actividades se afectan directamente (primeros vecinos), cuáles indirectamente a través de una actividad intermediaria (segundos vecinos), así profundizando hasta donde se lo desee.
+Las series temporales pueden estudiarse con técnicas provenientes del Análisis de Series Temporales. Una de las principales medidas que se pueden realizar es la \textit{correlación} entre dos series, cuánto están conectados causalmente dos fenómenos. Puede verse en qué grado el aumento o la disminución de la producción de cierto producto influye sobre la otro y con cuánto retardo temporal.
 
 Se podrá discernir entre situaciones como la suba del precio de importación de un insumo de una actividad crítica —un hub— de la suba del precio de una actividad marginal en la red (con escasas conexiones). Desde ya que la propagación de costos a productos finales será distinta en cada caso.
 

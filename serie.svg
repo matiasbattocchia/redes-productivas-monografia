@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="serie.svg">
+   sodipodi:docname="serie.pdf">
   <defs
      id="defs4">
     <marker
@@ -91,8 +91,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.2746376"
-     inkscape:cx="186.92513"
-     inkscape:cy="142.46187"
+     inkscape:cx="187.66048"
+     inkscape:cy="151.25072"
      inkscape:document-units="px"
      inkscape:current-layer="svg2"
      showgrid="false"
@@ -110,7 +110,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -265,18 +265,23 @@
        id="tspan5960">2009</tspan></text>
   <text
      xml:space="preserve"
-     style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#333333;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
-     x="185.94745"
-     y="43.919777"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:150%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#333333;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+     x="185.9826"
+     y="31.919777"
      id="text4626"
-     sodipodi:linespacing="125%"><tspan
+     sodipodi:linespacing="150%"><tspan
        sodipodi:role="line"
-       x="185.94745"
-       y="43.919777"
-       id="tspan3396">Producción interna de algodón (02.74.38)</tspan></text>
+       x="185.9826"
+       y="31.919777"
+       id="tspan3396"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:150%;writing-mode:lr-tb;text-anchor:middle;font-family:Sans;-inkscape-font-specification:Sans Bold">Hilo de coser de algodón (520411)</tspan><tspan
+       sodipodi:role="line"
+       x="185.9826"
+       y="52.919777"
+       id="tspan8408">Producción interna</tspan></text>
   <text
      xml:space="preserve"
-     style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#333333;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#333333;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
      x="43.2724"
      y="98.53167"
      id="text4626-4"

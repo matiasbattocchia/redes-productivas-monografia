@@ -62,7 +62,7 @@ Los \textit{grafos} son objetos matemáticos que modelan conexiones entre elemen
   \label{cadena}
 \end{figure}
 
-La Teoría de Grafos se ha encargado de estudiar en profundidad a estos objetos. Ha desarrollado un sinnúmero de medidas y procedimientos que ponen en evidencia características de los mismos. Mencionaremos ahora algunos de sus conceptos con el fin de ilustrar la teoría en relación al análisis del aparato productivo nacional.
+La Teoría de Grafos se ha encargado de estudiar en profundidad estos objetos. Ha desarrollado un sinnúmero de medidas y procedimientos que ponen en evidencia características de los mismos. Mencionaremos ahora algunos de sus conceptos con el fin de ilustrar la teoría en relación al análisis del aparato productivo nacional.
 
 \begin{figure}[h!]
   \centering
@@ -91,7 +91,7 @@ Al número de \textit{primeros vecinos} (nodos a distancia 1) que un nodo tiene 
   \label{hubs}
 \end{figure}
 
-En las redes sociales las personas ``populares'' cumplen el rol de hubs. Aparte de poseer un gran número de contactos —y debido a esto— suelen oficiar de puentes entre distintas comunidades, mejorando la conectividad en la red\footnote{Los hubs son en parte responsables de los \textit{6 grados de separación}. Gracias a ellos ``el mundo es pequeño''.}. El rasgo distintivo de una comunidad es ser un conjunto de personas que se conocen entre sí: nodos agrupados, mutuamente conectados. En el sistema lo más parecido a las comunidades serían las cadenas de valor. Las actividades industriales altamente conectadas que se comportan como nexo entre cadenas, de existir, serían hubs\footnote{Estamos suponiendo que la red industrial es del tipo \textit{scale-free} (posee hubs), aunque probable, podría no ser cierto.}.
+Citando un ejemplo, en las redes sociales las personas ``populares'' cumplen el rol de hubs. Aparte de poseer un gran número de contactos —y debido a esto— suelen oficiar de puentes entre distintas comunidades, mejorando la conectividad en la red\footnote{Los hubs son en parte responsables de los \textit{6 grados de separación}. Gracias a ellos ``el mundo es pequeño''.}. El rasgo distintivo de una comunidad es ser un conjunto de personas que se conocen entre sí: nodos agrupados, mutuamente conectados. En el sistema lo más parecido a las comunidades serían las cadenas de valor. Las actividades industriales altamente conectadas que se comportan como nexo entre cadenas, de existir, serían hubs\footnote{Estamos suponiendo que la red industrial es del tipo \textit{scale-free} (posee hubs), aunque probable, podría no ser cierto.}.
 
 Hacemos hincapié en los hubs porque son \textbf{la fortaleza y la debilidad} de las redes que se caracterizan por tenerlos. Como se dijo, hacen un aporte importante a la conectividad de la red; sin embargo el coste de esta ventaja es una red susceptible a fallos ante la anulación o el mal funcionamiento de sus hubs.
 
@@ -110,7 +110,7 @@ Es posible añadir otras clases de nodos a la representación de la industria pa
   \label{bipartito}
 \end{figure}
 
-El sistema dispone de una colección de \textbf{actividades} y otra de \textbf{productos}, creadas a partir de la \textsc{Clasificación Internacional Industrial Uniforme}\footnote{Nomenclatura en uso por la AFIP y la ONU para clasificar procesos productivos.} (CIIU) y del \textsc{Sistema Armonizado}\footnote{Nomenclatura ampliamente difundida en el comercio internacional para clasificar manufacturas.} (SA) respectivamente. Un extracto de estas clasificaciones puede verse en la tabla \ref{extracto}. Sus elementos son las piezas interconectables con las que se construye el grafo de la industria (figura \ref{nomencladores}). Es una característica fundamental del sistema el implementar nomenclaturas utilizadas por organismos nacionales e internacionales para la identificación de los nodos; es lo que posteriormente permite incluir estadísticas con naturalidad, ya que estas se elaboran en base a las clasificaciones mencionadas.
+El sistema dispone de una colección de \textbf{actividades} y otra de \textbf{productos}, creadas a partir de la \textsc{Clasificación Internacional Industrial Uniforme}\footnote{Nomenclatura en uso por la AFIP y la ONU para clasificar procesos productivos.} (CIIU) y del \textsc{Sistema Armonizado}\footnote{Nomenclatura ampliamente difundida en el comercio internacional para clasificar manufacturas, en uso por el INDEC y la ONU para elaborar estadísticas.} (SA) respectivamente. Un extracto de estas clasificaciones puede verse en la tabla \ref{extracto}. Sus elementos son las piezas interconectables con las que se construye el grafo de la industria (figura \ref{nomencladores}). Es una característica fundamental del sistema el implementar nomenclaturas utilizadas por organismos nacionales e internacionales para la identificación de los nodos; es lo que posteriormente permite incluir estadísticas con naturalidad, ya que estas se elaboran en base a las clasificaciones mencionadas.
 
 \begin{table}[h]
   \centering
@@ -140,9 +140,9 @@ El sistema dispone de una colección de \textbf{actividades} y otra de \textbf{p
   \label{nomencladores}
 \end{figure}
 
-Las actividades industriales se conectan con productos en \textbf{relación de aprovisionamiento}, discriminando si son insumos, o en \textbf{relación de producción}, sin son manufacturas de la actividad. Este rompecabezas es armado sobre de informes sectoriales y regionales existentes, generados por organismos como el Ministerio de Economía y la AFIP.
+Las actividades industriales se conectan con productos en \textbf{relación de aprovisionamiento}, discriminando si son insumos, o en \textbf{relación de producción}, sin son manufacturas de la actividad. Este rompecabezas es armado en base a informes sectoriales y regionales existentes, generados por organismos como el Ministerio de Economía y la AFIP.
 
-En el modelo considerado, las actividades son \textbf{procesos de transformación} y los productos \textbf{materia} capaz de ser transformada. A su vez las relaciones de aprovisionamiento y producción establecen direcciones preferenciales dentro de la red: la materia fluye por caminos que van agregándole valor en cada proceso.
+En el modelo considerado, las actividades son \textbf{procesos de transformación} y los productos \textbf{materia} capaz de ser transformada. A su vez, las relaciones de aprovisionamiento y producción establecen direcciones preferenciales dentro de la red: la materia fluye por caminos que van agregándole valor en cada proceso.
 
 No habíamos recurrido a relaciones direccionadas en la sección anterior. Cuando un grafo las incorpora, se lo conoce como \textit{grafo dirigido} (figura \ref{dirigido}).
 
@@ -157,7 +157,7 @@ No habíamos recurrido a relaciones direccionadas en la sección anterior. Cuand
 
 % Series Temporales
 
-La clase de estadísticas a las que el sistema recurre en mayor medida son \textit{series temporales}: secuencias de datos en el tiempo, típicamente espaciados en intervalos temporales uniformes (figura \ref{serie}). A la versión básica del sistema le resultan de particular interés la evolución temporal de dos tipos de indicadores: \textbf{cantidades} y \textbf{precios}; combinando estos se pueden calcular otros, como \textbf{precios unitarios}.
+La clase de estadísticas a las que el sistema recurre en mayor medida son \textit{series temporales}: secuencias de datos en el tiempo, típicamente espaciados en intervalos temporales uniformes (figura \ref{serie}). En la versión básica del sistema resultan de particular interés la evolución temporal de dos tipos de indicadores: \textbf{cantidades} y \textbf{precios}; combinando estos se pueden calcular otros, como \textbf{precios unitarios}.
 
 \begin{figure}[h!]
   \centering
@@ -179,7 +179,7 @@ Decimos que el grafo de la industria se comporta como un sustrato para las estad
 
 % Análisis
 
-Anteriormente dijimos que el grafo introduce una noción de distancia entre nodos. Acabamos de mencionar que podemos asociar series temporales a los nodos. Por lo tanto el grafo para establece una noción de distancia entre series temporales. Aquí yace el potencial de la herramienta: no es lo mismo analizar estadísticas ``sueltas'' que asentadas en una estructura. El grafo incorpora información de la realidad en el sistema, es un mapa en el que se lee cuáles actividades y productos se afectan directamente (primeros vecinos), cuáles indirectamente a través de un intermediario (segundos vecinos), así profundizando hasta donde se lo desee.
+Anteriormente dijimos que el grafo introduce una noción de distancia entre nodos. Acabamos de mencionar que podemos asociar series temporales a los nodos. Por lo tanto \textit{el grafo establece una noción de distancia entre series temporales}. Aquí yace el potencial de la herramienta: no es lo mismo analizar estadísticas ``sueltas'' que asentadas en una estructura. El grafo incorpora información de la realidad en el sistema, es un mapa en el que se lee cuáles actividades y productos se afectan directamente (primeros vecinos), cuáles indirectamente a través de un intermediario (segundos vecinos), etcétera.
 
 Las series temporales pueden estudiarse con técnicas provenientes del Análisis de Series Temporales para extraer información significativa. Una de las principales medidas realizables es la \textit{dependencia estadística}\footnote{La dependencia estadística no es condición suficiente para asegurar la dependencia causal entre dos fenómenos.} entre series temporales, llamada \textit{correlación cruzada}. Puede evaluarse por ejemplo en qué grado el aumento o la disminución de la producción de cierto producto influye sobre la de otro y con cuánto retardo temporal.
 
@@ -189,9 +189,9 @@ La herramienta puede ser utilizada con fines retrospectivos y prospectivos. Los 
 
 \subsection*{Aún más posibilidades}
 
-Es posible continuar enriqueciendo el modelo adicionando nuevas clases de nodos\footnote{Este trabajo considera solamente al sector productivo. El financiero se deja para un próximo.}. Cuatro muy informativas son territorios, labores, mercados y tecnologías. La primera permite procesar datos geográficos para complementar el semblante \textbf{sectorial} con el \textbf{regional}. La segunda agrega una capa de análisis de \textbf{fuerza de trabajo} al mapa\footnote{Las actividades industriales requieren recursos humanos.}. Mercados tenemos externos e internos, son orígenes y destinos de productos\footnote{Los mercados también son una abstracción del comercio, partes de la red desconocidas en detalle.}. Por último, nodos que describen tecnologías existentes, cuyas relaciones con las actividades representan el respectivo grado de transferencia tecnológica\footnote{Los nodos de tecnologías sí se conectan entre sí. Así el sistema modela el árbol de dependencia entre tecnologías.}.
+Es posible continuar enriqueciendo el modelo adicionando nuevas clases de nodos\footnote{Este trabajo considera solamente al sector productivo. El financiero se deja para un próximo.}. Cuatro que resultan muy informativas son territorios, labores, mercados y tecnologías. La primera permite procesar datos geográficos para complementar el semblante \textbf{sectorial} con el \textbf{regional}. La segunda agrega una capa de análisis de \textbf{fuerza de trabajo} al mapa\footnote{Las actividades industriales requieren recursos humanos.}. Mercados tenemos externos e internos, son orígenes y destinos de productos\footnote{Los mercados también son una abstracción del comercio, partes de la red desconocidas en detalle.}. Por último, nodos que describen tecnologías existentes, cuyas relaciones con las actividades representan el respectivo grado de transferencia tecnológica\footnote{Los nodos de tecnologías sí se conectan entre sí. Así el sistema modela el árbol de dependencia entre tecnologías.}.
 
-Está dentro de las posibilidades del sistema distinguir subcategorías de productos tales como bienes de capital, insumos, energía y servicios\footnote{El sistema considera a los servicios como productos intangibles y no-almacenables.}.
+Está dentro de las posibilidades del sistema distinguir subcategorías de productos, tales como bienes de capital, insumos, energía y servicios\footnote{El sistema considera a los servicios como productos intangibles y no-almacenables.}.
 
 El grafo es capaz de asimilar tipos de información de los más diversos. Antes de emprender la construcción de un modelo más complejo, la versión básica —compuesta por actividades y productos— debe madurar. Vale mencionar que el sistema no recurre a datos que el Estado no recabe a través de la AFIP o el INDEC en la actualidad, o tenga la potestad de conseguirlos si se lo propone; en todo caso los obstáculos se hallan en la articulación entre sus propios organismos.
 
@@ -205,7 +205,7 @@ Por otro lado podría utilizarse al sistema para proyectar desarrollos de comple
 
 \subsection*{Los estratos de agregación}
 
-Hasta ahora se ha hablado de una red agregada. Esta dispone nodos y nomencladores en relación \textit{uno-a-uno}: cada nodo del grafo se corresponde con \textbf{un y sólo un} nomenclador; en otras palabras diferentes actividades y productos figuran una única vez en la red. El sistema también puede ser orientado hacia el otro extremo, descendiendo al nivel de los agentes económicos.
+Hasta ahora se ha hablado de una red agregada. Esta dispone nodos y nomencladores en relación \textit{uno-a-uno}: cada nodo del grafo se corresponde con \textbf{un y sólo un} nomenclador; en otras palabras, diferentes actividades y productos figuran una única vez en la red. El sistema también puede ser orientado hacia el otro extremo, descendiendo al nivel de los agentes económicos.
 
 La red desagregada, en la que se consideran perfiles de empresas, se visualiza como una ``red social'' de empresas. Cada agente agrupa actividades industriales —tal cual figura en su inscripción en la AFIP—, estas actividades producen y consumen productos (figura \ref{perfil}). Nótese que en general las actividades y los productos ahora se repiten en el grafo, debido a las empresas que se dedican a los mismos ramos; en este caso la relación entre nodos y nomencladores es \textit{muchos-a-uno}. Dos empresas tendrán una \textbf{relación comercial} por cada actividad de una que produzca un producto que una actividad de la otra consuma.
 
@@ -216,7 +216,9 @@ La red desagregada, en la que se consideran perfiles de empresas, se visualiza c
   \label{perfil}
 \end{figure}
 
-La agregación sucede cuando se integran los datos de las actividades y los productos de las empresas, discriminando por nomenclador. Este procedimiento genera la estructura de la red agregada, que emerge del comportamiento de los agentes (figura \ref{estratos}). La intensidad de las relaciones es función de la cantidad de tales intercambios.
+La agregación sucede cuando se integran los datos de las actividades y los productos de las empresas, discriminando por nomenclador. Este procedimiento genera la estructura de la red agregada, que emerge del comportamiento de los agentes (figura \ref{estratos}).
+
+%La intensidad de las relaciones es función de la cantidad de tales intercambios.
 
 \begin{figure}[h!]
   \centering
@@ -231,7 +233,7 @@ Otra funcionalidad del sistema es la de ser usado por los agentes económicos pa
 
 En comparación con los datos agregados, los desagregados son más costosos de recopilar. Los primeros suelen publicarse, los segundos usualmente son confidenciales. Lo expuesto en el párrafo anterior es un recurso para conseguirlos: los datos personales son el punto de partida de las devoluciones personalizadas. Otro instrumento —con particular potencial para trazar la red comercial— son las facturas electrónicas.
 
-Si bien la idea es que los datos desagregados sean volcados en los perfiles de empresas y que sea el propio sistema quien los agregue, inicialmente el sistema se nutrirá de información agregada—a causa de la dificultad mencionada. La adquisición de datos desagregados se implementará en etapas posteriores de su desarrollo.
+Si bien la idea es que los datos desagregados sean volcados en los perfiles de empresas y que sea el propio sistema quien los agregue, inicialmente este se nutrirá de información agregada—a causa de la dificultad mencionada. La adquisición de datos desagregados se implementará en etapas posteriores de su desarrollo.
 
 Realizar un seguimiento de todas las empresas del país es sin duda una tarea complicada. Existen posibilidades de intentar una aproximación: que el sistema sea consciente aunque sea de las grandes empresas, una cifra más asible que si se tratara del total; después de todo el \textit{Principio de Pareto}\footnote{Vagamente enunciado: El 20\% de los agentes genera el 80\% de la riqueza.} nos indica que este grupo reducido de empresas controla la mayor porción del mercado. Esto alcanzaría para practicar algunas estimaciones.
 
@@ -239,7 +241,7 @@ Realizar un seguimiento de todas las empresas del país es sin duda una tarea co
 
 El sistema organiza y almacena una gran cantidad de datos para su funcionamiento. Tanto los datos crudos como los procesados (siempre que sean considerados públicos) podrán ser consultados y/o descargados para su uso general por medio de la \textit{interfaz web} del sistema, mientras que al mismo tiempo estarían disponibles a través de un \textit{servicio web} para ser accedidos por otros sistemas informáticos cómodamente.
 
-En general el acceso a datos sobre el país en la actualidad es restringido, principalmente porque no se encuentran publicados o no lo están en un formato apto para máquinas: informes en \textsc{PDF}, \textsc{DOC}, \textsc{XLS}, fáciles de comprender para el humano pero costosos para la computadora. Por esta razón creemos que el sistema puede ser un aporte sin precedentes en el campo de los \textbf{datos abiertos}. Terceros —especialmente la academia— podrían aprovecharlo para contrastar modelos económicos, crear indicadores, estudiar políticas, e inclusive proponer mejoras al mismo sistema\footnote{Este uso rememora a la filosofía del software libre.}, entre otros usos.
+En general el acceso a datos sobre el país en la actualidad es restringido, principalmente porque no se encuentran publicados o no lo están en un formato apto para máquinas: informes en \textsc{PDF}, \textsc{DOC}, \textsc{XLS}, fáciles de comprender para el humano pero costosos para la computadora. Por esta razón creemos que el sistema puede ser un aporte sin precedentes en el campo de los \textbf{datos abiertos}. Terceros —especialmente la Academia— podrían aprovecharlo para contrastar modelos económicos, crear indicadores, estudiar políticas, e inclusive proponer mejoras al mismo sistema\footnote{Este uso rememora a la filosofía del software libre.}, entre otros usos.
 
 \section*{Conclusiones}
 
